@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "b948b2de-fe5a-49ce-a35e-30cfb9adca54",
+		"name": "ProcessesAndAudiences",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11863659"
+	},
+	"item": [
+		{
+			"name": "Create Process",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"caseNumber\": \"0201234-56.2024.8.26.0101\",\r\n  \"court\": \"6ª Vara Cível\",\r\n  \"district\": \"Mossoro\",\r\n  \"subject\": \"Pensão Alimentencia\",\r\n  \"status\": \"ACTIVE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"process"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Process",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"caseNumber\": \"0201234-56.2024.8.26.0100\",\r\n  \"court\": \"5ª Vara Cível\",\r\n  \"district\": \"Natal\",\r\n  \"subject\": \"Cobrança indevida\",\r\n  \"status\": \"ACTIVE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 17 Jun 2025 20:21:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"caseNumber\": \"0201234-56.2024.8.26.0100\",\n    \"court\": \"5ª Vara Cível\",\n    \"district\": \"Natal\",\n    \"subject\": \"Cobrança indevida\",\n    \"status\": \"ACTIVE\",\n    \"audiences\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "List Processes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"process"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "ARCHIVED",
+							"disabled": true
+						},
+						{
+							"key": "district",
+							"value": "São Paulo",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Processes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 17 Jun 2025 20:22:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"caseNumber\": \"0201234-56.2024.8.26.0100\",\n        \"court\": \"5ª Vara Cível\",\n        \"district\": \"Natal\",\n        \"subject\": \"Cobrança indevida\",\n        \"status\": \"ACTIVE\",\n        \"audiences\": []\n    }\n]"
+				},
+				{
+					"name": "List Processes 2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/process?district=São Paulo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ARCHIVED",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "São Paulo"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 17 Jun 2025 20:24:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"caseNumber\": \"0001234-56.2024.8.26.0100\",\n        \"court\": \"5ª Vara Cível\",\n        \"district\": \"São Paulo\",\n        \"subject\": \"Cobrança indevida\",\n        \"status\": \"ACTIVE\",\n        \"audiences\": []\n    },\n    {\n        \"id\": 3,\n        \"caseNumber\": \"0002345-67.2024.8.26.0100\",\n        \"court\": \"3ª Vara de Família\",\n        \"district\": \"São Paulo\",\n        \"subject\": \"Guarda compartilhada\",\n        \"status\": \"ARCHIVED\",\n        \"audiences\": []\n    },\n    {\n        \"id\": 8,\n        \"caseNumber\": \"0007890-12.2024.8.26.0100\",\n        \"court\": \"6ª Vara Criminal\",\n        \"district\": \"São Paulo\",\n        \"subject\": \"Tráfico de drogas\",\n        \"status\": \"SUSPENDED\",\n        \"audiences\": []\n    }\n]"
+				},
+				{
+					"name": "List Processes 3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ARCHIVED",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "São Paulo",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Jun 2025 01:11:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"caseNumber\": \"0201234-56.2024.8.26.0100\",\n        \"court\": \"5ª Vara Cível\",\n        \"district\": \"Natal\",\n        \"subject\": \"Cobrança indevida\",\n        \"status\": \"ACTIVE\",\n        \"audiences\": [\n            {\n                \"id\": 1,\n                \"dateTime\": \"2025-06-18T20:25:48.541\",\n                \"location\": \"Tribunal de Justica\",\n                \"audienceType\": \"CONCILIATION\"\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"caseNumber\": \"0201234-56.2024.8.26.0101\",\n        \"court\": \"6ª Vara Cível\",\n        \"district\": \"Mossoro\",\n        \"subject\": \"Pensão Alimentencia\",\n        \"status\": \"ACTIVE\",\n        \"audiences\": [\n            {\n                \"id\": 2,\n                \"dateTime\": \"2025-06-18T20:25:48.541\",\n                \"location\": \"Tribunal de Justica\",\n                \"audienceType\": \"CONCILIATION\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create Audience",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"processId\": 2,\r\n  \"dateTime\": \"2025-06-18T20:25:48.541Z\",\r\n  \"typeAudience\": \"CONCILIATION\",\r\n  \"location\": \"Tribunal de Justica\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/audience",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"audience"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Audience",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"processId\": 1,\r\n  \"dateTime\": \"2025-06-17T20:25:48.541Z\",\r\n  \"typeAudience\": \"CONCILIATION\",\r\n  \"location\": \"Tribunal de Justica\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/audience",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"audience"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 17 Jun 2025 20:56:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"dateTime\": \"2025-06-17T20:25:48.541\",\n    \"location\": \"Tribunal de Justica\",\n    \"audienceType\": \"CONCILIATION\",\n    \"legalProcessCaseNumber\": \"0001234-56.2024.8.26.0100\"\n}"
+				}
+			]
+		},
+		{
+			"name": "List Audience Schedule",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"processId\": 1,\r\n  \"dateTime\": \"2025-06-17T20:25:48.541Z\",\r\n  \"typeAudience\": \"CONCILIATION\",\r\n  \"location\": \"Tribunal de Justica\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/audience/schedule?district=Mossoro&day=2025-06-18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"audience",
+						"schedule"
+					],
+					"query": [
+						{
+							"key": "district",
+							"value": "Mossoro"
+						},
+						{
+							"key": "day",
+							"value": "2025-06-18"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Audience Schedule",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"processId\": 1,\r\n  \"dateTime\": \"2025-06-17T20:25:48.541Z\",\r\n  \"typeAudience\": \"CONCILIATION\",\r\n  \"location\": \"Tribunal de Justica\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/audience/schedule?district=São Paulo&day=2025-06-17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"audience",
+								"schedule"
+							],
+							"query": [
+								{
+									"key": "district",
+									"value": "São Paulo"
+								},
+								{
+									"key": "day",
+									"value": "2025-06-17"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 17 Jun 2025 21:12:20 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"audienceId\": 3,\n        \"dateTime\": \"2025-06-17T20:25:48.541\",\n        \"typeAudience\": \"CONCILIATION\",\n        \"location\": \"Tribunal de Justica\",\n        \"caseNumber\": \"0001234-56.2024.8.26.0100\",\n        \"court\": \"5ª Vara Cível\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get JWT Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc1MDIwODg3NywiZXhwIjoxNzUwMjk1Mjc3fQ.Y0MSFcMV49De4HVGM2p8NmVUbUyxLQPFl8yZ9xXzaeX18p92IKCfdHdsBxW7kE6p",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
